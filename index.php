@@ -73,6 +73,10 @@ $ip = $_SERVER['REMOTE_ADDR'];
             <td>IP Address</td>
             <td><button class="btn btn-dark btn-sm" data-clipboard-text="<?=$ip?>"><?=$ip?></button></td>
         </tr>
+        <tr>
+            <td>Network Speed</td>
+            <td id="val_network_speed">Loading...</td>
+        </tr>
 <!---->
 <!--        <tr>-->
 <!--            <td>Map</td>-->
@@ -201,6 +205,11 @@ $ip = $_SERVER['REMOTE_ADDR'];
 
     ;(function($){
         $.userData = function() {
+
+            console.log(navigator);
+
+            networkSpeed = navigator.connection.downlink + ' Mbps';
+            $('#val_network_speed').html(networkSpeed);
 
             var userData = {};
             userData.userAgent = navigator.userAgent;
